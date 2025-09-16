@@ -618,3 +618,21 @@ input[type="file"]::file-selector-button:hover {
     box-shadow: 0 10px 30px rgba(204, 0, 0, 0.4);
     transform: translateY(-2px);
 }
+/* Estilo para o link de Login */
+#botoes a[href*="login"] {
+    background: linear-gradient(135deg, #000000 0%, #CC0000 100%);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(204, 0, 0, 0.3);
+}
+
+#botoes a[href*="login"]:hover {
+    background: linear-gradient(135deg, #CC0000 0%, #000000 100%);
+    box-shadow: 0 10px 30px rgba(204, 0, 0, 0.4);
+    transform: translateY(-2px);
+}

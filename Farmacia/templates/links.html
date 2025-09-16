@@ -3,4 +3,14 @@
     <a href="{% url 'agora' %}">Ver Data e Hora</a>
     <a href="{% url 'postar' %}">Postar</a>
     <a href="{% url 'listaposts' %}">Lista</a>
+
+    {% if user.is_authenticated %}
+        <span>{{ user.username }}</span>
+        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <input type="submit" value="Logout" class="btn btn-danger" style="padding: 5px 10px; font-size: 14px;">
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
 </div>
