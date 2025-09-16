@@ -37,10 +37,22 @@ def postar(req):
         form = PostForm()
 
     return render(req, "postar.html", {"formulario": form}) 
-    
+
     todos_posts = models.Post.objects.all()
 def ver_postagens(req):
     todos_posts = models.Post.objects.filter(aprovado=True)
     return render(req, 'listar_posts.html', {
         'postagens': todos_posts
     })
+
+    
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('inicio')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/registrar.html', {'form': form})
