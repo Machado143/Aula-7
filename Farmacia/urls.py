@@ -9,9 +9,6 @@ urlpatterns = [
     path('controle/', views.controle, name='lista'),
     path('postar/', views.postar, name='postar'),
     path('Postagens/', views.ver_postagens, name='listaposts'),
+    path('registrar/', views.registrar, name='registrar'),
     path('contas/', include("django.contrib.auth.urls")),
-
 ]
-
-
-    

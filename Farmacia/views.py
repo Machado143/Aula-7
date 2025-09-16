@@ -1,7 +1,9 @@
 from datetime import datetime
 from operator import truediv
 from Farmacia.forms import PostForm
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 from Farmacia import models
 
 
@@ -17,15 +19,14 @@ def verDataHora(req):
     agora = datetime.now()
     return render(req, 'data-hora.html', {
         'datahora_atual': agora
-   
-   
-   
     })
+
 
 def controle(req):
     return render(req, 'controle.html', {
         'variavel': range(10)
     })
+
 
 def postar(req):
     if req.method == "POST":
@@ -38,7 +39,7 @@ def postar(req):
 
     return render(req, "postar.html", {"formulario": form}) 
 
-    todos_posts = models.Post.objects.all()
+
 def ver_postagens(req):
     todos_posts = models.Post.objects.filter(aprovado=True)
     return render(req, 'listar_posts.html', {
@@ -46,13 +47,13 @@ def ver_postagens(req):
     })
 
     
-def signup(request):
+def registrar(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('inicio')
+            return redirect('home')  # Redireciona para a página inicial após cadastro
     else:
         form = UserCreationForm()
     return render(request, 'registration/registrar.html', {'form': form})

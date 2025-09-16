@@ -1,5 +1,6 @@
 {% extends 'mestre.html' %}
 
+{% load socialaccount %}
 
 {% load crispy_forms_tags %}
 {% block conteudo %}
@@ -7,5 +8,6 @@
     {{ form|crispy }}
     {% csrf_token %}
     <input type="submit" value="Login">
+    <a href="{% provider_login_url 'google' %}" class="btn btn-danger">Login com Google</a>
     </form>
 {% endblock conteudo %}
